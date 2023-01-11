@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Ishaan-Bedi-s-workspace-tbb9k6.us-east-1.xata.sh/db/secrets",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}
