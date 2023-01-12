@@ -120,8 +120,7 @@ export default function Create() {
                       type="button"
                       disabled={copyText === "Copied!"}
                       className={`${
-                        copyText === "Copied!" &&
-                        "cursor-not-allowed bg-black"
+                        copyText === "Copied!" && "cursor-not-allowed bg-black"
                       } inline-flex justify-center rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium text-gray-50 hover:bg-black/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2`}
                       onClick={() => {
                         setCopyText("Copied!");
@@ -149,7 +148,7 @@ export default function Create() {
         <h1 className="lg:md:sm:text-5xl text-4xl font-bold pt-4 pb-8">
           Create a{" "}
           <Link href={`/`}>
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-pink-600 to-purple-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-tr from-rose-400 via-fuchsia-500 to-indigo-500">
               secret
             </span>
           </Link>
@@ -198,6 +197,7 @@ export default function Create() {
                   <input
                     onKeyDown={(e) => {
                       var allowed = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=,./<>?;:'"[]{}\|~\``;
+                      allowed += "Backspace";
                       if (allowed.indexOf(e.key) === -1) {
                         e.preventDefault();
                       }
@@ -220,7 +220,7 @@ export default function Create() {
                 <select
                   disabled={loading}
                   onChange={(e) => setValidity(parseInt(e.target.value))}
-                  className={`w-2/6 text-left select select-bordered select-primary text-gray-50 bg-black transition delay-75 duration-300 ease-in-out focus:outline-none focus:ring-none focus:border-gray-50 cursor-pointer border-gray-700 ring-0 rounded-md ${
+                  className={`lg:md:w-2/6 w-full text-left select select-bordered select-primary text-gray-50 bg-black transition delay-75 duration-300 ease-in-out focus:outline-none focus:ring-none focus:border-gray-50 cursor-pointer border-gray-700 ring-0 rounded-md ${
                     loading && " cursor-not-allowed"
                   }`}
                 >

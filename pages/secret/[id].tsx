@@ -3,6 +3,7 @@ import { getXataClient } from "../../src/xata";
 import { useState } from "react";
 import axios from "axios";
 import Head from "next/head";
+import Link from "next/link";
 const DecodeSecret = ({
   record,
 }: {
@@ -46,9 +47,11 @@ const DecodeSecret = ({
       </Head>
       <h1 className="font-semibold lg:md:sm:text-3xl text-xl px-1  text-center py-12">
         Here&apos;s the{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-br from-rose-400 via-fuchsia-500 to-indigo-500">
-          secret
-        </span>{" "}
+        <Link href="/">
+          <span className="text-transparent bg-clip-text bg-gradient-to-br from-rose-400 via-fuchsia-500 to-indigo-500">
+            secret
+          </span>{" "}
+        </Link>
         you&apos;re looking for.
       </h1>
       <center>
@@ -61,7 +64,7 @@ const DecodeSecret = ({
                 value={
                   showSecret
                     ? secret
-                    : "Secret will be displayed here once you decrypt it..."
+                    : "Secret will be displayed here once you reveal it..."
                 }
               ></textarea>
               <div className="flex flex-col items-center ">
@@ -196,6 +199,24 @@ const DecodeSecret = ({
                       </>
                     )}
                   </h3>
+                )}
+                {showSecret && (
+                  <Link href="/">
+                    <div className="px-8 my-12">
+                      <div className="grid gap-8 items-start justify-center">
+                        <div className="relative group">
+                          <div className="absolute -inset-0.5 bg-gradient-to-tr from-rose-400 via-fuchsia-500 to-indigo-500 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                          <button className="relative px-7 py-4 bg-black rounded-lg leading-none flex items-center divide-x divide-gray-600">
+                            <span className="flex items-center px-2 space-x-5">
+                              <span className="text-gray-100 font-medium">
+                                Start using Secrets
+                              </span>
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
                 )}
               </div>
             </div>

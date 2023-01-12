@@ -1,16 +1,15 @@
 import { getXataClient } from "../../src/xata";
 import { NextApiRequest, NextApiResponse } from "next";
+const crypto = require("crypto");
+
 var handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const xata = getXataClient();
   var encryptPassed = (str: string) => {
-    let result = "";
     let key = process.env.PASSWORD;
-    for (let i = 0; i < str.length; i++) {
-      result += String.fromCharCode(
-        str.charCodeAt(i) + key.charCodeAt(i % key.length)
-      );
-    }
-    return result;
+    const cipher = crypto.createCipher("aes-256-cbc", key);
+    let encrypted = cipher.update(str, "utf8", "hex");
+    encrypted += cipher.final("hex");
+    return encrypted;
   };
   const pushToDb = async ({
     passwordProtected,
