@@ -36,7 +36,7 @@ const Hero = () => {
             </div>
           </div>
         </Link>
-        <Link href="/about">
+        <Link href="/about" className="lg:md:sm:block hidden">
           <button className="bg-gray-50 px-12 border transition delay-75 duration-300 ease-in-out hover:bg-black hover:text-gray-50 rounded-md p-3">
             About
           </button>
