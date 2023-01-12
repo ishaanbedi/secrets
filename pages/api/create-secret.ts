@@ -1,8 +1,17 @@
 import { getXataClient } from "../../src/xata";
 import { NextApiRequest, NextApiResponse } from "next";
-import bcrypt from "bcryptjs";
 var handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const xata = getXataClient();
+  var encryptPassed = (str: string) => {
+    let result = "";
+    let key = process.env.PASSWORD;
+    for (let i = 0; i < str.length; i++) {
+      result += String.fromCharCode(
+        str.charCodeAt(i) + key.charCodeAt(i % key.length)
+      );
+    }
+    return result;
+  };
   const pushToDb = async ({
     passwordProtected,
     secret,
@@ -15,22 +24,20 @@ var handler = async (req: NextApiRequest, res: NextApiResponse) => {
     validity: number;
   }) => {
     const record = await xata.db.secrets_database.create({
-      date_when_created: new Date(),
       protected: passwordProtected,
       visits: 0,
-      secret: secret,
+      secret: encryptPassed(secret),
       password: password,
       validity: validity,
     });
     return record;
   };
   var { passwordProtected, secret, password, validity } = req.body;
-  if (!passwordProtected) password = null;
-  var salt = await bcrypt.genSalt(10);
-  if (password) {
-    password = await bcrypt.hash(password, salt);
+  if (!passwordProtected) {
+    password = null;
+  } else {
+    password = encryptPassed(password);
   }
-  secret = await bcrypt.hash(secret, salt);
   var { id } = await pushToDb({
     passwordProtected,
     secret,
@@ -38,7 +45,6 @@ var handler = async (req: NextApiRequest, res: NextApiResponse) => {
     validity,
   });
   res.status(200).json(id.slice(4));
-  // res.status(200).json({ id: "test" });
 };
 
 export default handler;

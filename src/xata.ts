@@ -10,7 +10,6 @@ const tables = [
   {
     name: "secrets_database",
     columns: [
-      { name: "date_when_created", type: "datetime" },
       { name: "protected", type: "bool", notNull: true, defaultValue: "false" },
       { name: "visits", type: "int", notNull: true, defaultValue: "0" },
       { name: "secret", type: "text" },

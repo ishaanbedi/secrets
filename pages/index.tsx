@@ -7,7 +7,7 @@ export default function Home() {
       <Head>
         <title>Secrets</title>
       </Head>
-      <section className="bg-black/90 py-5 h-screen">
+      <section className="bg-black/90">
         <Hero />
       </section>
     </>
