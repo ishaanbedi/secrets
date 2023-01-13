@@ -14,15 +14,9 @@ export default function Home() {
         <section className="py-12">
           <Hero />
         </section>
-        <section>
-          <About />
-        </section>
-        <section>
-          <Working />
-        </section>
-        <section>
-          <Privacy />
-        </section>
+        <About />
+        <Working />
+        <Privacy />
         <footer>
           <Footer />
         </footer>
