@@ -4,12 +4,14 @@ const crypto = require("crypto");
 
 var handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const xata = getXataClient();
-  var encryptPassed = (str: string) => {
-    let key = process.env.PASSWORD;
-    const cipher = crypto.createCipher("aes-256-cbc", key);
-    let encrypted = cipher.update(str, "utf8", "hex");
-    encrypted += cipher.final("hex");
-    return encrypted;
+  var encrypt_secret = (secret) => {
+    let password = process.env.PASSWORD;
+    const password_hash = crypto.createHash("sha256").update(password).digest();
+    const iv = crypto.randomBytes(16);
+    const cipher = crypto.createCipheriv("aes-256-cbc", password_hash, iv);
+    let ciphertext = cipher.update(secret, "utf8", "hex");
+    ciphertext += cipher.final("hex");
+    return iv.toString("hex") + ciphertext;
   };
   const pushToDb = async ({
     passwordProtected,
@@ -25,7 +27,7 @@ var handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const record = await xata.db.secrets_database.create({
       protected: passwordProtected,
       visits: 0,
-      secret: encryptPassed(secret),
+      secret: encrypt_secret(secret),
       password: password,
       validity: validity,
     });
@@ -35,7 +37,7 @@ var handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!passwordProtected) {
     password = null;
   } else {
-    password = encryptPassed(password);
+    password = encrypt_secret(password);
   }
   var { id } = await pushToDb({
     passwordProtected,

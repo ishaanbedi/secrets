@@ -40,7 +40,7 @@ const Working = () => {
             </div>
             <p className="text-gray-300">
               User enters a secret with customizations like password protection
-              and setting validity, which is then encrypted on the server and
+              and setting validity, which is then encrypted at the backend and
               sent over to the database safely and securely.
             </p>
           </div>
@@ -104,10 +104,10 @@ const Working = () => {
               </svg>
             </div>
             <p className="text-gray-300">
-              When a user requests to view the secret, the application checks
-              wether the URL is valid and the secret has not yet expired, at the
-              server before sending anything to the user, and then only proceeds
-              to send data to the user if the secret is valid.
+              The application checks for a valid URL and unexpired secret on
+              each request at the backend before sending anything to the client,
+              only proceeding if the request is valid and handling errors
+              gracefully.
             </p>
           </div>
           <div>
@@ -129,10 +129,10 @@ const Working = () => {
               </svg>
             </div>
             <p className="text-gray-300">
-              The secret is still encrypted at the client side and is only
-              decrypted when the user enters the correct password (if any) and
-              the secret is still valid and has not expired, by sending a
-              request to the server to decrypt the secret.
+              The secret remains encrypted on the client side and is decrypted
+              only when the user enters the correct password (if applicable) and
+              the secret is still valid and unexpired, by sending a request to
+              the backend for decryption.
             </p>
           </div>
         </div>

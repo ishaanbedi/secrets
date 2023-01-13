@@ -11,9 +11,6 @@ const About = () => {
         </div>
         <div className="lg:w-1/2">
           <p className="text-base text-gray-300 md:text-lg font-semibold">
-            Secrets acts as a secure and reliable platform for the sharing of
-            sensitive information.
-            <br />
             Whether you need to share passwords, environment variables, code
             snippets, or other confidential information, our fully encrypted
             service ensures that your information is kept safe and private.
@@ -27,11 +24,10 @@ const About = () => {
                 Secrets
               </span>{" "}
             </Link>
-            .
           </p>
         </div>
       </div>
-      <div className="grid gap-8 row-gap-10 grid-cols-2 lg:grid-cols-4 py-4">
+      <div className="grid gap-8 row-gap-10 grid-cols-2 lg:grid-cols-4 py-12">
         <div>
           <div
             className={`flex items-center justify-center w-16 h-16 mb-4 rounded-full ${gradient}`}
@@ -58,7 +54,7 @@ const About = () => {
             Secure and private
           </h6>
           <p className="mb-3 text-sm text-gray-300">
-            Secrets uses the latest encryption technology to ensure that your
+            Secrets uses the best encryption technology to ensure that your
             information is kept safe and private.
           </p>
         </div>

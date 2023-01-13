@@ -98,7 +98,7 @@ const DecodeSecret = ({
                           ? "cursor-not-allowed bg-gray-300"
                           : ""
                       }                      
-                      lg:md:sm:w-2/6 border transition delay-75 duration-300 ease-in-out rounded-md p-3 bg-gray-50 text-black`}
+                      lg:md:sm:w-2/6 w-full border transition delay-75 duration-300 ease-in-out rounded-md p-3 bg-gray-50 text-black`}
                     >
                       {fetched ? (
                         <span className="flex justify-center items-center space-x-2">
@@ -182,7 +182,7 @@ const DecodeSecret = ({
                 {record.validity === -1 ? (
                   <h3>
                     The secret does not have any expiry period. It&apos;ll be
-                    available here, forever...
+                    available here, forever.
                   </h3>
                 ) : (
                   <h3>
