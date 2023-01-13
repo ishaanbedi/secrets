@@ -2,6 +2,10 @@
 
 A secure, user-friendly platform for sharing sensitive information with encryption, over the internet.
 
+A secret is information that is meant to be kept hidden or confidential. 
+
+A secret can include various types of sensitive information such as passwords, emails, and other personal or confidential data.
+
 ## Features
 
 - Password protection: Set unique passwords for each secret
