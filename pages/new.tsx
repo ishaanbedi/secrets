@@ -5,6 +5,7 @@ import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
 export default function Create() {
+  var gradient = `bg-gradient-to-bl from-purple-200 via-purple-400 to-purple-800`;
   const [secret, setSecret] = useState("");
   const [passwordProtected, setPasswordProtected] = useState(false);
   const [password, setPassword] = useState("");
@@ -148,7 +149,7 @@ export default function Create() {
         <h1 className="lg:md:sm:text-5xl text-4xl font-bold pt-4 pb-8">
           Create a{" "}
           <Link href={`/`}>
-            <span className="text-transparent bg-clip-text bg-gradient-to-tr from-rose-400 via-fuchsia-500 to-indigo-500">
+            <span className={`text-transparent bg-clip-text ${gradient}`}>
               secret
             </span>
           </Link>
@@ -180,7 +181,7 @@ export default function Create() {
                         setValidity(1);
                       }}
                       className={`${
-                        passwordProtected ? "bg-blue-500" : "bg-gray-200"
+                        passwordProtected ? `${gradient}` : "bg-gray-200"
                       } relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ring-0 border-none outline-none `}
                     >
                       <span
