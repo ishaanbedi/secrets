@@ -2,8 +2,11 @@ import Head from "next/head";
 import Link from "next/link";
 
 const Expired = () => {
+  var gradient = `bg-gradient-to-bl from-purple-200 via-purple-400 to-purple-800`;
   return (
-    <section className="h-screen flex justify-center items-center bg-black text-gray-50">
+    <section
+      className={`h-screen flex justify-center items-center bg-black text-gray-50`}
+    >
       <Head>
         <title>Expired | Secrets</title>
       </Head>
@@ -11,7 +14,7 @@ const Expired = () => {
         <h1 className="lg:md:text-3xl text-xl font-semibold">
           Oops! That{" "}
           <Link href="/">
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-rose-400 via-fuchsia-500 to-indigo-500">
+            <span className={`text-transparent bg-clip-text ${gradient}`}>
               secret
             </span>{" "}
           </Link>
