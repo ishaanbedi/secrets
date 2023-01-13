@@ -28,6 +28,7 @@ const Expired = () => {
         </h3>
         <h4 className="py-2 text-gray-200">
           Do you think this is a mistake?{"  "}
+          <br/>
           <Link
             href="https://github.com/ishaanbedi/secrets/issues/new"
             target={"_blank"}
