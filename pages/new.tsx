@@ -100,10 +100,10 @@ export default function Create() {
                     </p>
                     <Link
                       className="my-3 text-underline underline-offset-4 text-gray-700 font-semibold"
-                      href={`https://secrets.ishn.xyz/secret/${result}`}
+                      href={`https://secrets-ishn.vercel.app/secret/${result}`}
                       target={"_blank"}
                     >
-                      secrets.ishn.xyz/secret/
+                      secrets-ishn.vercel.app/secret/
                       {result.substring(0, 10) + "..."}
                     </Link>
                   </div>
@@ -126,7 +126,7 @@ export default function Create() {
                       onClick={() => {
                         setCopyText("Copied!");
                         navigator.clipboard.writeText(
-                          `https://secrets.ishn.xyz/secret/${result}`
+                          `https://secrets-ishn.vercel.app/secret/${result}`
                         );
                         setTimeout(() => {
                           setCopyText("Copy");
